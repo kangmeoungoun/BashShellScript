@@ -1,16 +1,12 @@
-### 리눅스와 쉘
-### 리눅스와 쉘(Bash)
-- 유용한 Bash 커맨드라인 단축키
-  - Tab : 명령 자동완성
-  - Ctrl + c: 인터럽트 시그널을 보내 실행 중인 프로세스를 중단
-  - Ctrl + a: 라인 맨 앞으로 커서 이동
-  - Ctrl + e: 라인 맨뒤로 커서 이동
-  - Ctrl + r: history 검색
-    - Ctrl + r 입력후 검색어 입력 한디 다시 Ctrl + r 누르면 뒤에계속 찾아준다. 
+### 리눅스 명령어
+### 실습환경
 
+- JSLinux(Fedora29)
+  - 자바 스크립트로 만든 리눅스 에뮬레레이터
+  - 장점 : 리눅스를 설치하지 않고 웹으로 대부분의 기능을 사용가능
+  - 단점 : 느림(첫 로딩이 느리고 명령어 실행 후 결과가 나오기까지도 느리다)
+- 로컬 리눅스를 설치 또는 클라우드의 리눅스 서비스에서 bash 를 사용
+  - codeonweb
 ```shell
-cd : ChangeDirectory
-pwd : printWorkingDirectory
-//1씩 증가하면서 1초마다 print 
-num=0; while true;do ((num+=1)); echo ${num}; sleep 1;done
+
 ```
