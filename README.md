@@ -1,14 +1,38 @@
 ### 리눅스 명령어
 ### 실무에서 자주 사용하는 명령어_파일관련_명령어
-- 파일 시스템 관련 명령어
-
-  - less : 상하로 커서 이동이 가능한 파일보기 (cat 보다 유용할듯.)
-  - ln(Link) : 지정한 파일에 대한 심볼링링크나 하드링크를 생성
-    - 하드링크 : 원본파일 을 물리적으로 2개 의 파일을 각각 다른이름으로 하나의 원본파일을 바라보고 있따.(하나를 삭제해도 하나가남아서 원본파일을 읽을수 있다.)
-    - 심볼릭 링크 : 윈도우 비유하면 바로가기 원본파일을 가리킨다.(원본을 삭제하면 링크파일은 읽을수 없다.)
+- 파일 관련 명령어
+  - paste : 지정한 파일들의 행을 읽어 탭으로 구분하여 병합
+  - dd(Dataset Definition) : 블록 단위로 데이터셋을 정의하여 파일을 쓰고 읽음
+    - 랜덤데이터로 파일을 생성하거나 그 파일을 생성한 시간을 측정해서 드라이버의 성능체크
+  - tar (Tape Archive) : 지정한 데이터 및 디렉토리를 하나의 파일로 만듦 (압축)
 ```shell
-ln -s hardlink.txt  symbolicklink.txt //심볼릭 링크
-lrwxrwxrwx 1 root root   12 Feb 21 00:02 symboliclink.txt -> hardlink.txt
-l 링크뜻 
-hardlink.txt 파일의 이름을 변경하면 symbolicklink.txt 파일은 읽을수가 없다.
+paste txt1 txt2
+aaa     111
+bbb     222
+ccc     333
+ddd     444
+eee     555
+
+vi ~/.bashrc
+alias 등록
+source ~/.bashrc 적용
+
+dd if=인풋파일이름 of=아웃풋파일이름 bs=바이트(크기) count=블럭을복사할횟수
+dd if=/dev/urandom of=ddtest2 bs=1024 count=1024
+ddtest2 라는 이름의로 1.0M 랜덤문자 파일 생성
+
+tar -cvzf 생성할파일명 압축할디렉토리명/파일명   압축할떄 (c=create,v=verbos(말많은) 실행과정을 전부 화면출력,z=gzip 으로 압축한다. f=파일이름을 명시적으로 지정해주는옵션)
+tar -xvzf 파일명    압축풀떄 (x =extract(추출하다))
+tar -tf 파일명 (압출파일리스트 볼때) 
+
+tar -cvzf work.tgz ./work work.tgz 파일로 압축하겠다  ./work 폴더를   .tgz tar 로 gzip 압축했다 암묵적으로 사용
+
+tar -tf work.tgz
+./work/
+./work/ddtest2
+./work/ddtest
+./work/txt1
+./work/txt2
+   
+tar -xvzf work.tgz 
 ```
