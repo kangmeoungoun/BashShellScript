@@ -1,15 +1,22 @@
 ### 리눅스 명령어
 ### 실무에서 자주 사용하는 명령어_프로세스관련_명령어
 - 프로세스 관련 명령어
-    - ps(Process Status) : 시스템에서 실행중인 프로세스에 대한 정보를 출력
-    - pstree(Process Status TREE) : 시스템에서 실행 중인 프로세스에 대한 정보를 트리구조로 출력
     - top : 프로세스 목록을 일정 시간마다 새로고침하여 화면에 출력하는 툴 시스템 전반적인 상황을 모니터링 할 수 있음
-
+      - top 한상태에서 1누르면 cpu 코어별로 용량 k누르면 kill 할수 있다.
+    - nohup(NO HangUPs) : 쉘 스크립트 파일을 데몬 형태로 실행 표준 출력을 지정한 파일로 리다이렉트
+    - kill : 지정한 프로세스에 지정한 시그널을 보내 프로세스 종료
+  
 ```shell
-ps -ef 
-ps aux :메모리 사용량 등 보여준다.
-ps axfwwwww : 뒤에 명령어 짤린것들도 다 보여준다.
+nohup echo "Bash Commnad"
+[root@67c211f24ca1 work]# cat nohup.out
+Bash Commnad
 
-yum -y install psmisc
-pstree
-```    
+kill -2 프로세스번호
+kill -INT 프로세스번호
+
+kill -15 프로세스번호
+kill -TERM 프로세스번호
+
+kill -9 프로세스번호
+kill -KILL 프로세스번호
+```
