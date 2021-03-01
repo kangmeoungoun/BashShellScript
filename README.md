@@ -1,34 +1,47 @@
 ### 간단 쉘 스크립트
-### 간단 쉘 스크립트(1) 조건문 case
-- 조건문
-  - Case 변수 in
-    - 패턴 1) : 패턴 1이 참일 경우 실행할 명령어;;
-    - 패턴 2) : 패턴 2가 참일 경우 실행할 명령어;;
-    - *) : 위에서 지정한 모든 패턴이 해당이 안되는 경우 실행할 명령어;; 
-  - esac  
+### 간단 쉘 스크립트(3) 조건문 반복문
+- 반복문
+  - for 변수 in 변수에 넣을 데이터
+    - do : 데이터가 끝날 때까지 반복해서 실행할 명령어
+    - done
+  - while 조건문
+    - do 조건이 참인 동안 반복해서 실행할 명령어
+    - done
+  
 ```shell
 
-./nginx_ctl.sh a b c 
-### $1 : a ,$2 : b, $3 : c
+#!/bin/bash
 
+#!/bin/bash
 
-## ./nginx_ctl.sh start      : nginx start
-## ./nginx_ctl.sh stop       : ntinx stop
-## ./nginx_ctl.sh reload     : nginx reload
-## ./nginx_ctl.sh configtest : nginx.conf check
-CMD=$1
+for SVR in cent1 cent2 cent3
+do
+        echo "${SVR}";
+done
 
-case "${CMD}" in
-start)
-        echo start;;
-stop)
-        echo stop;;
-reload)
-        echo reload;;
-configtest)
-        echo configtest;;
-*)
-        echo "./nginx_ctl.sh {staart|stop|reload|configtest}";;
-esac
+for NUM in $(seq 1 3)
+do
+        echo "${NUM}"
+done
 
+for NUM in $(cat serverlist)
+do
+        echo "${NUM}"
+done
+
+#!/bin/bash
+
+NUM=1
+while [ "${NUM}" -le 3 ]
+do
+        echo "cent${NUM}"
+        NUM=$(( ${NUM} + 1 ))
+done
+
+while read SVR
+do
+        echo ${SVR}
+done < serverlist
+
+$(seq 1 3 ) : 명령어 의 결과값 받을때 사용 $()
 ```
