@@ -1,89 +1,40 @@
 ### 간단 쉘 스크립트
-### 메뉴 구성
-- 메뉴가 있는 쉘 스크립트
-    - dialog --옵션명 옵션에 필요한 변수
-      
-|    옵션  |        설명            |  옵션   |            설명             | 
-|---------|---------------------- |---------|----------------------------|
-| calendar|날짜를 선택하는 달력을 표시| gouge   |진행 비율을 나타는 진행바를 표시|   
-| cheklist|여러 항목의 선택이 가능한 체크박스를 표시| infobox   |메세지를 표시|   
-| radiolist|한 가지 항목만 선택이 가능한 라디오버튼을 표시| menu   |선택할 수 있는 목록을 표시|   
-| fselect|파일을 선택하는 창을 표시| msgbox|메시지를 표시하고 ok 버튼을 표시|
-| passwordbox|입력받는 텍스트를 숨기는 입력 창을 표시| yesno|메시지를 표시하고 yes,no 버튼을 표시|
+### 고급 명령어
+
+- CUT : 간결한 문멉으로 파일에서 문자열 필드를 뽑아내는 명령
+- SED : 텍스트 입력 스트림을 받아 출력을 제어할 수 있는 명령
+  - sed 옵션 문자열처리_스크립트 파일명
+  - e : 입력을 처리하는 하나의 처리 명령을 의미 여러 번 지정하여 여러 번의 처리가 가능
+  - f file : 사전에 명령을 추가한 파일을 지정하여 명령을 수행
+  - n : 각 명령의 결과를 화면에 출력하지 않고 print 명령을 대기
+  - r : 확장된 정규표현식을 사용
+  - 문자열 처리 명령어
+    - s/소스패턴/결과패턴/ substitute 한 줄에서 처음 나타나는 소스패턴을 결과패턴으로 치환
+    - [텍스트라인-범위]s/소스패턴/결과패턴/ 지정한 범위에서 처음 나타나는 소스패턴을 결과해턴으로 치환
+- AWK : sed 기능 + 변수/함수/연산자를 사용하여 필요한 데이터를 제어할 수 있는 프로그램이 가능한 명령
 
 ```shell
-#1. uptime
-#2. df -h
-#3. free -m
-#4. pstree
-#5. 서버를 입력받아서 그 서버에 ssh 로 접속
+echo "this is text stream" | sed 's/text/test/'
+this is test stream
 
-# 함수
-# clear
-# txt 로 메뉴를 출력
+sed 's/테스트/test/' data.txt
+1.이것은 test 문장입니다.
+2.이것은 test 문장입니다.
+3.이것은 test 문장입니다.
+4.이것은 test 문장입니다.
+5.이것은 test 문장입니다.
+6.이것은 test 문장입니다.
+7.이것은 test 문장입니다.
 
-#!/bin/bash
+sed '3,5s/테스트/test/' data.txt | cat data2.txt
 
-function menu {
-  clear
-  cat << EOF
-  ============= MENU ===============
-  1. uptime
-  2. df
-  3. free
-  4. pstree
-  5. ssh connect
-  6. menu exit
-  =================================
-EOF
-  read -p "menu choice : " SELECT
-}
-function press_key {
-  echo
-  read -n1 -rsp "press any key to continue..."
-  echo
-  ehco
-
-}
-while true
-do
-  menu
-  case ${SELECT} in
-    1)
-        clear
-        echo " uptime "
-        uptime
-        press_key
-        ;;
-    2)
-        clear
-        echo " df "
-        df -h
-        press_key
-        ;;
-    3)
-        clear
-        echo " free "
-        free -m
-        press_key
-        ;;
-    4)
-        clear
-        echo " pstree "
-        pstree
-        press_key
-        ;;
-    6)
-        exit 0;;
-    *)
-        echo "wrong number"
-        press_key
-        ;;
-
-  esac
-done
+sed -e 's/테스트/test/; s/문장/t/' data.txt
+1.이것은 test t입니다.
+2.이것은 test t입니다.
+3.이것은 test t입니다.
+4.이것은 test t입니다.
+5.이것은 test t입니다.
+6.이것은 test t입니다.
+7.이것은 test t입니다.
 
 ```
-
-
-      
