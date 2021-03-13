@@ -11,7 +11,9 @@ nohup echo "Bash Commnad"
 [root@67c211f24ca1 work]# cat nohup.out
 Bash Commnad
 
-kill -2 프로세스번호
+INT TERM 프로세스를 안전하게 종료 전부작업처리후 종료
+
+kill -2 프로세스번호 
 kill -INT 프로세스번호
 
 kill -15 프로세스번호
@@ -19,4 +21,6 @@ kill -TERM 프로세스번호
 
 kill -9 프로세스번호
 kill -KILL 프로세스번호
+
+좀비 프로세스는 2 15 로 죽지 않는다.
 ```
