@@ -14,4 +14,24 @@ ex)
   touch test1 test2 test3 test4 test5 
   rename test test0 test?
 
+
+[root@67c211f24ca1 tmp]# ll
+total 12
+drwxr-xr-x 2 root root 4096 Mar 13 02:17 .
+drwxr-xr-x 3 root root 4096 Mar 13 02:15 ..
+-rw-r--r-- 1 root root    0 Mar 13 02:11 axt1
+-rw-r--r-- 1 root root    0 Mar 13 02:11 axt2
+-rw-r--r-- 1 root root    0 Mar 13 02:11 axt3
+-rw-r--r-- 1 root root    4 Feb 27 07:33 tmp.txt
+[root@67c211f24ca1 tmp]# rename a b axt?
+[root@67c211f24ca1 tmp]# ll
+total 12
+drwxr-xr-x 2 root root 4096 Mar 13 02:17 .
+drwxr-xr-x 3 root root 4096 Mar 13 02:15 ..
+-rw-r--r-- 1 root root    0 Mar 13 02:11 bxt1
+-rw-r--r-- 1 root root    0 Mar 13 02:11 bxt2
+-rw-r--r-- 1 root root    0 Mar 13 02:11 bxt3
+-rw-r--r-- 1 root root    4 Feb 27 07:33 tmp.txt
+
+
 ```
